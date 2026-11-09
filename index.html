@@ -253,9 +253,12 @@ const ORDER = ['a','n','e','t','i','l','o','k','u','r','ı','m','ü','s','ö','y
 const DAY = 86400000;
 const IV = [0,1,3,7,14,30]; // aralıklı tekrar: kutu → gün
 
-const WORDS = [...new Set(`anne ana nine nane ninni ne en an at et ot el al il ilk ek ok on kek kel kal kol kot koli kale kola kilo lale tel tek ten tat net tane kanat kanal kalkan kalk elek etek inek ekin ilan tekne tilki lokanta kolon kantin teneke tok atla takla anla Ali Ela Nil okul kulak kum mum mama elma limon kalem kurt kar kara arı ayı mantı tamir mutlu umut kule karne roket tren turna makarna kırk ılık kalın kartal nar tarak tarla rakam mart irmik ırmak ütü üzüm ürün süt su sus saat sarı sepet simit sinek soba sabun masa ayak ayna yol yumurta yemek yoğurt köy göl gül göz güneş top tavuk tavşan ördek öykü ödev üç çay çiçek çanta çatal çorba çocuk çilek bal balık bebek bulut baba bisiklet bardak boya dede deniz dal damla dere dolap dut dünya zeytin zil zebra gemi gece gelin güzel ceviz ceket cam şeker şapka şemsiye şişe kuş kaşık kapı pasta palto peynir pamuk patates havuç hayvan horoz ev kova vazo dağ yağmur ağaç soğan fil fare fincan fırın jeton pijama araba ateş armut aslan ekmek erik kedi köpek kutu kurbağa kitap oyun oda orman uçak uyku un öğretmen teyze amca dayı yıldız ay oyuncak sincap kirpi karınca kelebek balon`.split(/\s+/))];
+const CORE_WORDS = `anne ana nine nane ninni ne en an at et ot el al il ilk ek ok on kek kel kal kol kot koli kale kola kilo lale tel tek ten tat net tane kanat kanal kalkan kalk elek etek inek ekin ilan tekne tilki lokanta kolon kantin teneke tok atla takla anla Ali Ela Nil okul kulak kum mum mama elma limon kalem kurt kar kara arı ayı mantı tamir mutlu umut kule karne roket tren turna makarna kırk ılık kalın kartal nar tarak tarla rakam mart irmik ırmak ütü üzüm ürün süt su sus saat sarı sepet simit sinek soba sabun masa ayak ayna yol yumurta yemek yoğurt köy göl gül göz güneş top tavuk tavşan ördek öykü ödev üç çay çiçek çanta çatal çorba çocuk çilek bal balık bebek bulut baba bisiklet bardak boya dede deniz dal damla dere dolap dut dünya zeytin zil zebra gemi gece gelin güzel ceviz ceket cam şeker şapka şemsiye şişe kuş kaşık kapı pasta palto peynir pamuk patates havuç hayvan horoz ev kova vazo dağ yağmur ağaç soğan fil fare fincan fırın jeton pijama araba ateş armut aslan ekmek erik kedi köpek kutu kurbağa kitap oyun oda orman uçak uyku un öğretmen teyze amca dayı yıldız ay oyuncak sincap kirpi karınca kelebek balon kaplan zürafa maymun kaplumbağa yılan timsah balina yunus ahtapot penguen baykuş güvercin serçe papağan civciv kaz hindi öküz koyun kuzu keçi oğlak eşek deve geyik ceylan örümcek salyangoz solucan yengeç yavru buzağı tay muz portakal mandalina kiraz vişne karpuz kavun şeftali kayısı incir ayva ananas domates salatalık biber patlıcan sarımsak ıspanak marul fasulye nohut mercimek pirinç bulgur poğaça börek kurabiye bisküvi çikolata dondurma reçel ayran tereyağı pilav köfte pizza sandviç meyve sebze limonata mısır mantar mutfak banyo salon balkon pencere duvar tavan halı perde sandalye koltuk yatak lamba yastık yorgan battaniye havlu tabak tencere tava çaydanlık süpürge televizyon telefon bilgisayar kumanda anahtar kilit merdiven asansör sınıf öğrenci silgi defter kalemlik tebeşir tahta sıra ders teneffüs harf hece kelime cümle sayı makas cetvel gömlek pantolon elbise mont kazak tişört şort çorap ayakkabı terlik bot bere atkı eldiven kemer önlük gözlük taç yüzük baş kafa saç burun ağız diş dil yanak çene boyun omuz parmak tırnak karın sırt bacak diz topuk kalp abla ağabey kardeş babaanne anneanne hala kuzen aile arkadaş komşu rüzgar şimşek gökkuşağı nehir tepe yaprak çimen taş toprak ada plaj sahil gök hava kaktüs buz otobüs kamyon motor tramvay metro taksi helikopter traktör kırmızı mavi yeşil mor turuncu pembe beyaz siyah gri lacivert büyük küçük uzun kısa sıcak soğuk yeni eski tatlı ekşi tuzlu temiz hızlı yavaş üzgün kolay zor açık kapalı dolu boş ağır hafif yüksek ince yumuşak sert akıllı çalışkan minik kocaman neşeli gel git otur koş yürü oku yaz çiz say bak dinle konuş ye iç uyu uyan yıka sil topla getir götür ver tut aç kapa giy çıkar oyna sar sev bekle sor bul ara saklan zıpla tırman yüz dur bir iki dört beş altı yedi sekiz dokuz yirmi otuz elli bin sabah öğle akşam gün hafta yıl bugün yarın dün pazartesi salı çarşamba perşembe cuma cumartesi pazar ilkbahar sonbahar kış uçurtma salıncak kaydırak kukla yapboz davul gitar piyano keman hediye mektup kupa madalya para`.split(' ');
+const MORE_WORDS = `bu ve için mi de ben çok ama evet var da mı değil şey hayır daha sen kadar bana gibi yok iyi tamam her sana ki ya neden zaman sadece burada nasıl hiç sonra şimdi öyle mu şu önce biraz hadi oldu yani böyle ona lütfen bile çünkü peki eğer artık gerçekten geri kim başka belki doğru biri olur olacak adam ile hiçbir biz yardım demek hey tüm fazla nerede merhaba efendim orada son kötü sorun harika gerek tam bütün diye hemen siz ol olabilir size yüzden bayan aynı teşekkür hakkında tabii kendi kız devam bize izin iş buna selam kimse göre asla özür önemli tekrar yoksa işte içinde yine mü bence olmak birlikte olmaz lazım zaten gerçek onlar haydi birkaç emin herkes dakika pek ister yer hep ilgili etmek nereye hepsi buradan karşı kaç az burası hazır fakat benden yapmak kadın söz diğer bunlar kişi görmek kabul niye aman sağ kez bundan elbette falan hem yanlış onlara senden hoş yapma özel kontrol oraya geç bazı ayrıca ondan nereden dışarı beri yalnız insan merak erkek haber olmuş geçen sakin sanki karar veya dikkat yerine çabuk etme farklı sonunda sence fark üzerinde tamamen oldukça boyunca yeter neyse kes hangi olamaz ancak yüzünden birisi sahip yanında gelecek bende bazen konuşmak gitmek beraber henüz cevap yardımcı zamanı almak genç takip durum tabi günü adım söylemek neredeyse eder yeniden ciddi vay herhangi süre içeri mükemmel uzak gelen çıktı sakın saniye yakın garip hayal çeviri sürü galiba rahat alo güçlü verdi hayat hatta sende olay kesin hareket böylece acaba sürekli soru terk gelir komik aynen üzerine zarar şaka acele ait gizli şuna yeterince evlat uygun dans günaydın tuhaf memnun fikir tür rahatsız kere yaşlı mümkün bilmek belli yakında tahmin şöyle yalnızca vermek hasta üzere güvenlik berbat dair başkan dikkatli milyon normal sefer pardon yemin keşke şans aşağı millet cidden oradan kahve hata kaptan bakma dek yeterli asıl hoşça sessiz erken bilgi güç hak ufak üstüne mesaj nefes birçok basit yukarı çek gayet şarkı tıpkı bulmak vakit haklı ses sonraki konu muhteşem dalga film yerinde koca ikinci acil parti fena özellikle bilir birden sebep eğlenceli adına düşün rağmen zavallı söyleme konuşma alın defa müzik güvenli tercih patron sayın çoğu çoktan dürüst eskiden teklif dolayı numara olma unutma teslim canlı saçma bağlı onlardan bizden süper alan davet kalan olası dava sene kral kalmak şehir park gelmek takım mesela orası önceki yarım sık adama hale anlaşma öğrenmek ikna gurur ifade aferin sıkı bölüm yazık arka verici şef gider serbest üst dünyada birileri satın zengin ilginç üçüncü aptalca iyilik altın yaklaşık mantıklı değer isim niçin duymak yaşam karanlık görev yaşamak çeşit ortak edip aşırı önceden güven elde bey sahte sizden parça çift rica kişisel derece kimi hani saygı birazdan evin ön gücü zeki gitme verme destek alt alacak bayağı grup öylece türlü gerekli korumak verecek çıkmak epey inanılmaz şanslı dahil koy arama baştan sıradan geleni derin yiyecek birinci şimdilik plan test yaramaz geçmiş doğal nesi değerli sürpriz ziyaret başarılı düzgün çalışmak yargıç sol kat sahi çalışma can kanıt kurtarmak evli sağlam yüce müthiş günde itiraf profesör sever iptal bilim girdi daima çalış masum özgür kuzey sayesinde deme zayıf zamanında şurada yabancı birazcık not madem memur ileri fotoğraf güney ünlü adil resmen hizmet görmüş dönmek anlama giriş sıkıcı yan çekici metre şüpheli beyin sırf hedef ruh yakışıklı seçim çıkan rüya bakmak fırsat meşgul başında göstermek resim ışık peşinde engel müdür sorumlu hanım spor ayrı ters cep araştırma ortada iyice bölge derken tutmak numaralı düğün binlerce şükür işaret girmek birer bol kahraman ihtiyaç yarı hariç problem sormak rapor kayıt sır maalesef orta benzer tavsiye itibaren doğu görüşmek şimdiden oynamak idare cesur bunca enerji bağlantı savunma hangisi anlaşılan sinir yasal sağlık bırakmak sizce barış uzay ödeme yıllık topu açıkçası filan emir nihayet kazanmak onca akıl şirket sonuç bizde çıkın sanat nazik başlangıç yarar doğrusu prenses batı otel parlak hay duygusal karışık alma vahşi yüzde çıkış dokunma dahi yolculuk tanışmak sosyal çıkarmak çıkacak kamera üstelik elektrik başarısız eğitim onda madam acayip kalma ulusal gösteri tespit yukarıda sevimli bunda aniden getirmek geçirmek gene inşa tanık koruma cesaret mutlaka genel düşük gerçi teknik yerel beyefendi günlük düşünmek örnek yoğun futbol ülke pişman tarih kahvaltı utanç zorla eğlence çekmek tepki durma müsaade ucuz araç pes koç endişe it rol açıkça karşılık servis kraliçe havalı devlet yat kullanmak dev ekip hiçbiri heyecan pahalı büyü tim huzur sokak öncelikle usta eşlik aksi gaz alakalı gizlice dert ilgi iddia ödünç sezon sağlıklı adalet ödül efendi onur eksik bari veda ayakta şüphe yasak içmek izlemek benimki fiziksel atmak saf neresi kalıp gerçekte kendinden çıkma iletişim seyahat nokta başta his geniş tuzak kızıl prens sahne dost çöp temel hele geceleri üzücü kilometre alışveriş bırakma bozuk hakim doğrudan geçici karmaşık sadık katı toplantı göze dinlemek geçerli basın anı diğeri yaş atış sipariş anlatmak sizde yetişkin takdir tip tak hassas gönder halk etmen kişilik başlamak belediye bedava video yaşa nakit açıklama inan kıpırdama taze delik korkma kirli temsil mutluluk gizemli ateşli dış şirin testi aramak heyecanlı taraf buçuk yavaşça yazı ufaklık hesap sahiden birleşik gönüllü geçer yaşasın başkası yüzlerce duş bakış gelme kasaba vücut dönüş kart anlamak ipucu yazar öbür yorgun seninki lezzetli talep temin günah denemek beklemek oğlan bilet bizzat kırık sinyal hızla özgürlük şaşırtıcı tatil kuru tebrik tanıdık yakından aşkın sorum kural çözüm müşteri dik geçmek yetenekli olmamış kibar trafik oyuncu renk kusursuz maç seçenek sohbet emekli tarz bravo keskin takma mucize çizgi görüşme koku garanti laf uçuş dördüncü götürmek kimlik zafer han öylesine bar seri madde demir buyrun adli hasar döner merkez sağlamak göğüs elveda fazladan risk bilinen benzin paket kurtulmak ısrar tuvalet makine fırtına ertesi kalabalık açmak sıkıntı bugünkü posta gittikçe kira bakan kolayca sonsuz meydan aracı kanun deneme golf roman düşünme düz makinesi öğlen kaybetmek akıllıca kilitli çekim inanmak sabit hukuk bina model çığlık yakalamak öpücük tur tesadüf tatmin aksine sihirli durdurmak gümüş böylesi modern metal mevcut klasik gündüz program sessizlik kamp toz aylık sistem halka alay moda yarış görüntü radyo çıkarma sıfır saray gösteren üvey daire mezun deri barda duygu önemsiz düşünce yedek ihtimal milyar davranış uzman haksız ayın satış düzenli tarif etkili anında yönetim boşuna çıkmaz geceki güzellik feda operasyon yağ vali dişi ayrılmak ötürü anlam gazete telafi güvenilir lise hal uyum böcek koymak delil sabaha haberdar pilot merhamet yük temas zahmet nedeniyle müdahale ani öteki direk direkt ağlama kraliyet önem üstün kurtarma tutar yatırım çeker esas sınır alet uyarı devre nişan çalmak dosya kurmak anlamsız zamanla popüler çağrı robot amaç artı değişik gereksiz uslu kader adlı kemik mola reklam misafir koru kod yasa hız boy kımıldama kıyafet zorlu uzaylı yıllarca veri ilham gezegen dilemek etki temizlik hali birlik lider öte görüş çabucak kafalı puan ibaret okumak giderek şükran nadir çete bitirmek bağ dar gürültü gelişme alındı dana örneğin ulaşmak zekice maruz beşinci oysa sorma ortalıkta evvel eşit sesli teknoloji ömür sivil buluşma meşhur yanıt ödemek mösyö devamlı sinirli satmak uyanık sessizce petrol şahane mecbur delikanlı yazılı şüphesiz muazzam aktif aklı başarı politik dolusu müsait içecek oturma sayfa avcı saçlı yetenek yemiş aday ton bilimsel maya olumlu düşünür minnettar bekleme doğruca zar görünmez mars borçlu pazarlık koruyucu şov keser sonradan adres oksijen görgü öz bozucu üzülme terfi plastik devasa kent duman şahsen eylül kullanma garson aykırı köprü renkli dönem emniyet tanıklık bahane kutlu giren açar imza kurulu fakir dinleme mutsuz ekstra matematik dizi hayran gücün yazmak yem uydu kutlama çaba nasılsa hakaret bakım düzen böylesine defalarca başlama ofis beden değişim adet bahar olumsuz önünden okuma teker demin ticaret erkenden durmadan paylaşmak bencil şiir sör azıcık çamaşır toplum şahit kötülük bakarak otomatik uyumak kuvvetli durmak tersine düzine geçiş yorum kaya makul kalıcı oturmak şampiyon haksızlık pas tartışma çatlak belirli sabırlı koyu espri samimi liste şartlı keyif kaynak icat komuta yaşama fıstık ima dahası biçim endişeli razı geçit açma yolcu girme muhtemel haftalık çalar çaresiz hitap kiralık gerçekçi görme şart orijinal eleman miktar tamamıyla çatı elden kapıda riskli yayın avuç dönme bekar blok bahis malzeme kulüp etkisiz konsantre yoldaş yazın çelik istifa göndermek kasa saatlik jersey personel taklit röportaj sudan yatmak pratik kısım yönetici kulübe transfer mesafe sapan istemek yakıt açıklamak muayene saklamak iğne tanımak hazine içten hafıza alfa doğa alev şimdiki sihir iade sıvı hüküm beyzbol bulma şık asil hücre suçluluk bağımsız yaratıcı ip temmuz efsane uygunsuz elmas star onlarda fiyat surat hissetmek suçlama isimli analiz lakin vuruş çifte gölge yepyeni dul standart çal onsuz acilen ileride kovboy koşun kuşlar sanatçı maaş takas kesmek denk yönetmen atma esir bağış prova cadde çiftlik meclis sürücü umutsuz arazi kayıtlı şayet çözmek gelişmiş yerli organize deney peri kont kalkma kuralı kamu bahçe hayvanat harita düzeltmek makyaj sinema mide çeşitli gökyüzü tutacak elim mali yürüyüş devriye biftek şeref çalıntı kur şifre buluşmak nisan kaçta alıcı başbakan keşif evren hayli zamanlama gözlü proje mayıs sokmak eşsiz hizmetçi görmemiş tiyatro kül yetki altıncı görünür yetkili şekil geçme ayrılma hatalı antik haziran doğuştan karakter oturmuş ejderha kasım basketbol gülünç iri bitki servet ilişkin nöbet ilerleme emanet dikiş hayati cömert masaj restoran üçlü güzelce pişmanlık çekecek karışma açım küçücük lastik dedikodu kongre birim ıslak çeki seçme iniş basınç lüks`.split(' ');
+const CORE = new Set(CORE_WORDS.map(w=>w.toLocaleLowerCase('tr-TR')));
+let WORDS = [...new Set([...CORE_WORDS, ...MORE_WORDS])];
 
-const SENTENCES = ['Anne kek al.','Nine nane al.','Ela kola al.','Ali tekne al.','Anne et al.','Ela, kalk.','Nil kek al.','Ali kola al.','Tilki kale al.','Anne tel al.','Ela, atla!','Ali takla at.','Kuzu ot ye.','Ali okula koş.','Kedi süt iç.','Arı bal yapar.','Baba top at.','Ela elma ye.','Bu bir kalem.','Murat kitap oku.','Anne çay iç.','Kuş uçar.','Dede gazete oku.','Ali ip atla.','Kirpi elma yer.','Anne limon al.','Nil mum yak.','Kartal uçar.','Tavşan havuç yer.','Deniz mavi.','Bulut beyaz.','Kalem al, oku.'];
+const SENTENCES = ['Anne kek al.','Nine nane al.','Ela kola al.','Ali tekne al.','Anne et al.','Ela, kalk.','Nil kek al.','Ali kola al.','Tilki kale al.','Anne tel al.','Ela, atla!','Ali takla at.','Kuzu ot ye.','Ali okula koş.','Kedi süt iç.','Arı bal yapar.','Baba top at.','Ela elma ye.','Bu bir kalem.','Murat kitap oku.','Anne çay iç.','Kuş uçar.','Dede gazete oku.','Ali ip atla.','Kirpi elma yer.','Anne limon al.','Nil mum yak.','Kartal uçar.','Tavşan havuç yer.','Deniz mavi.','Bulut beyaz.','Kalem al, oku.',"Ali, kek al.","Ela, kola al.","Nil, ot al.","Kaan, kalk!","Kenan, atla!","Nine, nane al!","Anne, lale al!","Tilki kek al.","Ela takla at.","Kaan ilk takla at.","Nail tekne al.","Ali, ok at!","Kenan ok at.","Ela, keki al.","Ali ile Ela kalk!","Nine ile Nil kalk!","Kek tek, kola tek.","Tilki tekne al.","Etek al, kot al.","Ela, kot ile etek al.","Kaan, anla!","Ela, anla!","Nil, ekle!","Ali, kanat tak!","Ela tek kanat tak.","Anne kek ile kola al.","Kenan, tekne al!","Nil, kale al!","Kaan, lale al!","Ali, kalkan al!","Nine, kek ekle.","Ela, nane ekle.","Murat okula koşar.","Emir kalem al.","Nil karne al.","Anne makarna tart.","Kartal ırmak arar.","Arı lale arar.","Ali kar tutar.","Ela mum tutar.","Emir tren kurar.","Murat roket kurar.","Kurt tarlada uyur.","Nine irmik kat.","Okul tamam, Murat mutlu.","Kartal uçar, tırmanır.","Ali tarak al.","Nil limon al.","Ela elma al.","Arı mutlu, lale tatlı.","Turna ırmakta.","Tarla kuru.","Kedi süt ister.","Ördek ırmakta yüzer.","Selin dondurma ister.","Ali yıldız sayar.","Deniz serin, kum ılık.","Saat yedi oldu.","Dede yolda yürür.","Ela su ister.","Kedi uyur, köpek uyur.","Selin ütü al.","Annem sütü ısıttı.","Yeni yıl oldu.","Ördek de yüzer.","Ela saat kaç?","Emir kuyuya taş attı.","Dede, sütü sat!","Kedi minik, köpek iri.","Deniz mavi.","Ali yorulur, uyur.","Kuzu ot yer.","Bu bir kitap.","Bu bir kalem.","Bu kedi çok tatlı.","Babam bana top aldı.","Kuş ağaçta öter.","Annem çorba pişirdi.","Ben okula giderim.","Okulum çok güzel.","Öğretmenim beni sever.","Bahçede çiçek açtı.","Güneş doğdu, gün başladı.","Yağmur yağıyor.","Şemsiyeni al.","Kardeşim uyuyor.","Kapıyı kapat.","Pencereyi aç.","Elini yıka.","Dişlerini fırçala.","Süt iç, büyü.","Ben top oynarım.","Kedi fareyi kovaladı.","Köpek havladı.","Tavuk yumurtladı.","Arı bal yapar.","İnek süt verir.","Koyun meler.","At hızlı koşar.","Kaplumbağa yavaş yürür.","Balık suda yüzer.","Kuş gökte uçar.","Uçak havada uçar.","Tren raylarda gider.","Gemi denizde yüzer.","Araba yolda gider.","Bisiklete binerim.","Parkta salıncağa bindim.","Kaydıraktan kaydım.","Kum havuzunda oynadım.","Dedem bana masal anlattı.","Ninem kurabiye yaptı.","Teyzem bize geldi.","Amcam bana hediye aldı.","Sabah kahvaltı yaptık.","Akşam yemek yedik.","Gece yıldızlar parlar.","Ay gökyüzünde parlıyor.","Kış gelince kar yağar.","Yazın denize gideriz.","Sonbaharda yapraklar düşer.","İlkbaharda çiçekler açar.","Elma kırmızı.","Muz sarı.","Çimen yeşil.","Gökyüzü mavi.","Bulut beyaz.","Kalemim kırıldı.","Silgimi kaybettim.","Defterime resim çizdim.","Kitap okumayı severim.","Harfleri öğreniyorum.","Okumayı öğrendim.","Ben çok hızlı okurum.","Bugün hava güzel.","Yarın okula gideceğim.","Dün parka gittik.","Bir, iki, üç, say!","Topu bana at.","Hadi oyun oynayalım.","Saklambaç oynadık.","Ebe sen ol.","Annemi çok severim.","Babam işe gitti.","Kardeşim ağladı.","Ona oyuncak verdim.","Teşekkür ederim.","Günaydın anne!","İyi geceler baba!","Afiyet olsun.","Su içmek sağlıklıdır.","Meyve ye, güçlü ol.","Zürafanın boynu uzun.","Fil çok büyük.","Fare çok küçük.","Maymun muz yer.","Aslan ormanın kralı.","Tavşan havuç yer.","Sincap fındık toplar.","Kelebek çiçeğe kondu.","Karınca çok çalışkan.","Penguen buzda kayar.","Yunus çok akıllı.","Balina denizde yaşar.","Kirpi elma taşır.","Horoz sabah öter.","Civciv sarı ve minik.","Ördek vak vak der.","Kedi miyav der.","Köpek hav hav der."];
 
 const STORIES = [
   {id:'nane', t:'Nine ve Nane', em:'🌿', s:['Ali, kek al.','Ela, kola al.','Nine, nane al.','Anne, lale al.'], q:'Nine ne aldı?', a:['nane','kek','kola']},
@@ -269,6 +272,36 @@ const STORIES = [
   {id:'deniz', t:'Deniz', em:'🌊', s:['Biz denize gittik.','Deniz mavi.','Ali kumdan kale yaptı.','Ela top oynadı.'], q:'Ali ne yaptı?', a:['kale','pasta','gemi']},
   {id:'kus', t:'Kuş', em:'🐦', s:['Ağaçta bir kuş var.','Kuş cik cik öter.','Kuş uçar, gider.'], q:'Kuş nerede?', a:['ağaçta','denizde','evde']},
   {id:'balon', t:'Balon', em:'🎈', s:['Selin bir balon aldı.','Balon kırmızı.','Rüzgar esti.','Balon uçtu.'], q:'Balon ne renk?', a:['kırmızı','mavi','sarı']},
+  {"id": "kek", "t": "Kek Kek", "em": "🧁", "s": ["Anne kek al.", "Ali, kek al!", "Ela, kek al!", "Kek tek, tek!"], "q": "Anne ne aldı?", "a": ["kek", "kola", "lale"]},
+  {"id": "kanat", "t": "Kanat", "em": "🪽", "s": ["Ela kanat tak.", "Ali kanat tak.", "Kanat, kanat, kalk!", "Ela ile Ali kalk!"], "q": "Ela ne taktı?", "a": ["kanat", "etek", "kalkan"]},
+  {"id": "takla", "t": "Takla", "em": "🤸", "s": ["Ali takla at.", "Kaan takla at.", "Nil, atla!", "Ela, ilk takla at!"], "q": "Ali ne attı?", "a": ["takla", "kek", "ot"]},
+  {"id": "lokanta", "t": "Lokanta", "em": "🍽️", "s": ["Ali, Ela! Lokanta!", "Kek al, kola al.", "Nane al, ot al.", "Ela tok, Ali tok."], "q": "Ali ile Ela nerede?", "a": ["lokanta", "tekne", "kale"]},
+  {"id": "kalkan", "t": "Kalkan", "em": "🛡️", "s": ["Kenan kalkan al.", "Nail kalkan al.", "Kalkan tek, kale tek.", "Kenan, kale ile kal!"], "q": "Kenan ne aldı?", "a": ["kalkan", "kola", "lale"]},
+  {"id": "kartal", "t": "Kartal", "em": "🦅", "s": ["Kartal tarla arar.", "Kartal ırmak arar.", "Irmak tatlı, ılık.", "Kartal mutlu."], "q": "Kartal ne arar?", "a": ["ırmak", "kalem", "mum"]},
+  {"id": "roket", "t": "Roket", "em": "🚀", "s": ["Emir roket kurar.", "Roket kalkar!", "Emir mutlu, roket tamam."], "q": "Emir ne kurar?", "a": ["roket", "tren", "kule"]},
+  {"id": "makarna", "t": "Makarna", "em": "🍝", "s": ["Anne makarna tart.", "Murat irmik al.", "Makarna ılık ılık.", "Murat tok."], "q": "Murat ne aldı?", "a": ["irmik", "limon", "mum"]},
+  {"id": "tren", "t": "Tren", "em": "🚆", "s": ["Kenan trene atla.", "Tren kalkar.", "Tren ırmak, tarla atlar.", "Kenan mutlu."], "q": "Kenan neye atladı?", "a": ["trene", "tekneye", "kuleye"]},
+  {"id": "karne", "t": "Karne", "em": "📄", "s": ["Okul tamam.", "Murat kalem al.", "Nil karne al.", "Karne tamam, mutlu Nil!"], "q": "Nil ne aldı?", "a": ["karne", "kalem", "limon"]},
+  {"id": "kar", "t": "Kar", "em": "❄️", "s": ["Kar! Kar!", "Ali kar tutar.", "Ela karlı tarla arar."], "q": "Ali ne tutar?", "a": ["kar", "mum", "arı"]},
+  {"id": "deniz2", "t": "Deniz Kenarı", "em": "🏖️", "s": ["Yaz oldu.", "Ali ile Ela deniz kenarında.", "Deniz serin, kum ılık.", "Ela kumdan kule kurdu."], "q": "Ela ne kurdu?", "a": ["kule", "roket", "tren"]},
+  {"id": "sut", "t": "Minik Kedi", "em": "🥛", "s": ["Minik kedi süt ister.", "Nine süt doldurur.", "Kedi sütü yalar.", "Kedi tok, kedi uyur."], "q": "Kedi ne ister?", "a": ["süt", "ot", "kum"]},
+  {"id": "yildiz", "t": "Yıldızlar", "em": "⭐", "s": ["Ali yıldız sayar.", "On, yirmi, otuz...", "Ay da Ali’yi izler.", "Ali yorulur, uyur."], "q": "Ali ne sayar?", "a": ["yıldız", "ördek", "kalem"]},
+  {"id": "ordek", "t": "Ördek", "em": "🦆", "s": ["Ördek ırmakta yüzer.", "Minik ördek de yüzer.", "Annesi onu izler.", "Ördekler mutlu."], "q": "Ördek nerede yüzer?", "a": ["ırmakta", "kumda", "tarlada"]},
+  {"id": "saat", "t": "Saat Yedi", "em": "⏰", "s": ["Saat yedi.", "Selin kalktı.", "Selin yüzünü yıkadı.", "Selin okula yürüdü."], "q": "Saat kaç?", "a": ["yedi", "on", "iki"]},
+  {"id": "dondurma", "t": "Dondurma", "em": "🍦", "s": ["Selin dondurma ister.", "Annesi dondurma aldı.", "Dondurma serin, tatlı.", "Selin mutlu oldu."], "q": "Selin ne ister?", "a": ["dondurma", "süt", "limon"]},
+  {"id": "bahce", "t": "Dedemin Bahçesi", "em": "🍎", "s": ["Dedemin bahçesi var.", "Bahçede elma ağacı var.", "Ben elma topladım.", "Dedem çok sevindi."], "q": "Bahçede ne ağacı var?", "a": ["elma", "kiraz", "ayva"]},
+  {"id": "kardanadam", "t": "Kardan Adam", "em": "⛄", "s": ["Kış geldi, kar yağdı.", "Ece ile Efe kardan adam yaptı.", "Burnu havuç oldu.", "Kardan adam gülümsedi."], "q": "Kardan adamın burnu ne oldu?", "a": ["havuç", "elma", "patates"]},
+  {"id": "hayvanat", "t": "Hayvanat Bahçesi", "em": "🦒", "s": ["Bugün hayvanat bahçesine gittik.", "Zürafanın boynu çok uzun.", "Fil hortumuyla su içti.", "Maymunlar muz yedi."], "q": "Maymunlar ne yedi?", "a": ["muz", "elma", "havuç"]},
+  {"id": "dogumgunu", "t": "Doğum Günü", "em": "🎂", "s": ["Bugün Zeynep’in doğum günü.", "Pasta, balon ve hediyeler var.", "Herkes şarkı söyledi.", "Zeynep mumları üfledi."], "q": "Zeynep ne üfledi?", "a": ["mumları", "balonları", "çiçekleri"]},
+  {"id": "yagmur", "t": "Gökkuşağı", "em": "🌈", "s": ["Gökyüzü karardı.", "Şimşek çaktı, yağmur yağdı.", "Şemsiyemi açtım.", "Sonra gökkuşağı çıktı."], "q": "Yağmurdan sonra ne çıktı?", "a": ["gökkuşağı", "kar", "rüzgar"]},
+  {"id": "futbol", "t": "Gol!", "em": "⚽", "s": ["Mert top oynamayı sever.", "Topa vurdu, gol oldu!", "Arkadaşları alkışladı.", "Mert çok mutlu."], "q": "Mert topa vurunca ne oldu?", "a": ["gol oldu", "top kayboldu", "yağmur yağdı"]},
+  {"id": "kutuphane", "t": "Kütüphane", "em": "📚", "s": ["Annemle kütüphaneye gittik.", "Bir masal kitabı seçtim.", "Kitapta bir ejderha vardı.", "Ejderha çok iyi kalpliydi."], "q": "Kitapta ne vardı?", "a": ["ejderha", "kedi", "tren"]},
+  {"id": "pazar", "t": "Pazar Günü", "em": "🍓", "s": ["Pazar günü pazara gittik.", "Babam domates ve biber aldı.", "Ben de çilek seçtim.", "Çilekler çok tatlıydı."], "q": "Ben ne seçtim?", "a": ["çilek", "domates", "biber"]},
+  {"id": "dis", "t": "Pırıl Pırıl Dişler", "em": "🦷", "s": ["Her gece dişlerimi fırçalarım.", "Dişlerim bembeyaz olur.", "Doktor teyze beni övdü.", "Gülümsemem çok güzel."], "q": "Her gece ne yaparım?", "a": ["dişlerimi fırçalarım", "uyurum", "top oynarım"]},
+  {"id": "ucurtma", "t": "Uçurtma", "em": "🪁", "s": ["Rüzgar esiyordu.", "Babamla uçurtma uçurduk.", "Uçurtma bulutlara kadar çıktı.", "Ben ipini sıkı tuttum."], "q": "Uçurtmayı kiminle uçurduk?", "a": ["babamla", "dedemle", "ablamla"]},
+  {"id": "kamp", "t": "Kamp", "em": "⛺", "s": ["Ormanda kamp kurduk.", "Akşam ateş yaktık.", "Gökyüzünde yıldızlar vardı.", "Çadırda mışıl mışıl uyuduk."], "q": "Nerede kamp kurduk?", "a": ["ormanda", "denizde", "okulda"]},
+  {"id": "kirpi2", "t": "Aç Kirpi", "em": "🦔", "s": ["Kirpi çok acıkmıştı.", "Bahçede bir elma buldu.", "Elmayı dikenlerine taktı.", "Yuvasına mutlu döndü."], "q": "Kirpi ne buldu?", "a": ["elma", "armut", "muz"]},
+  {"id": "okulilk", "t": "İlk Gün", "em": "🏫", "s": ["Bugün okulun ilk günü.", "Çantamı hazırladım.", "Öğretmenim gülümsedi.", "Yeni arkadaşlar edindim."], "q": "Kim gülümsedi?", "a": ["öğretmenim", "annem", "dedem"]},
   {id:'corba', t:'Çorba', em:'🍲', s:['Annem çorba pişirdi.','Çorba sıcak.','Babam ekmek getirdi.','Hep birlikte yedik.'], q:'Annem ne pişirdi?', a:['çorba','pasta','kek']}
 ];
 
@@ -278,6 +311,9 @@ const EMOJI = {kek:'🧁',kale:'🏰',kola:'🥤',tekne:'⛵',tilki:'🦊',anne:
   gemi:'🚢',güneş:'☀️',göz:'👁️',şapka:'🎩',şemsiye:'☂️',kuş:'🐦',kapı:'🚪',pasta:'🎂',peynir:'🧀',havuç:'🥕',horoz:'🐓',ev:'🏠',ağaç:'🌳',fil:'🐘',fare:'🐭',kedi:'🐱',
   köpek:'🐶',kitap:'📖',uçak:'✈️',araba:'🚗',ateş:'🔥',aslan:'🦁',ekmek:'🍞',armut:'🍐',yumurta:'🥚',ay:'🌙',yıldız:'⭐',balon:'🎈',kelebek:'🦋',karınca:'🐜',kirpi:'🦔',
   sincap:'🐿️',ayak:'🦶',zebra:'🦓',zeytin:'🫒',makarna:'🍝',mantı:'🥟',dünya:'🌍',kutu:'📦',vazo:'🏺',palto:'🧥',fincan:'☕',soğan:'🧅',yağmur:'🌧️',dağ:'⛰️',gül:'🌹',boya:'🎨'};
+Object.assign(EMOJI, {"zürafa": "🦒", "maymun": "🐒", "kaplan": "🐯", "timsah": "🐊", "balina": "🐋", "yunus": "🐬", "ahtapot": "🐙", "penguen": "🐧", "baykuş": "🦉", "kartal": "🦅", "papağan": "🦜", "civciv": "🐤", "hindi": "🦃", "koyun": "🐑", "keçi": "🐐", "deve": "🐪", "geyik": "🦌", "kaplumbağa": "🐢", "kurbağa": "🐸", "yılan": "🐍", "örümcek": "🕷️", "salyangoz": "🐌", "yengeç": "🦀", "karpuz": "🍉", "portakal": "🍊", "muz": "🍌", "kiraz": "🍒", "şeftali": "🍑", "ananas": "🍍", "domates": "🍅", "biber": "🌶️", "patlıcan": "🍆", "mısır": "🌽", "salatalık": "🥒", "mantar": "🍄", "patates": "🥔", "sarımsak": "🧄", "pizza": "🍕", "sandviç": "🥪", "kurabiye": "🍪", "çikolata": "🍫", "dondurma": "🍦", "şeker": "🍬", "pilav": "🍚", "lamba": "💡", "telefon": "📱", "bilgisayar": "💻", "televizyon": "📺", "anahtar": "🔑", "kilit": "🔒", "makas": "✂️", "gözlük": "👓", "ayakkabı": "👟", "gömlek": "👕", "pantolon": "👖", "çorap": "🧦", "eldiven": "🧤", "atkı": "🧣", "taç": "👑", "yüzük": "💍", "uçurtma": "🪁", "oyuncak": "🧸", "otobüs": "🚌", "kamyon": "🚚", "traktör": "🚜", "helikopter": "🚁", "motor": "🏍️", "taksi": "🚕", "şimşek": "⚡", "gökkuşağı": "🌈", "yaprak": "🍃", "kaktüs": "🌵", "ada": "🏝️", "burun": "👃", "diş": "🦷", "bacak": "🦵", "baba": "👨", "dede": "👴", "gitar": "🎸", "davul": "🥁", "piyano": "🎹", "keman": "🎻", "kupa": "🏆", "madalya": "🏅", "mektup": "✉️", "hediye": "🎁", "kalp": "❤️", "buz": "🧊", "para": "💰", "okul": "🏫", "fincan": "☕", "tavuk": "🐔"});
+WORDS = [...new Set([...WORDS, ...Object.keys(EMOJI)])];
+Object.keys(EMOJI).forEach(k=>CORE.add(k));
 
 const BALLS = [
   {id:'turuncu',n:'Turuncu',c:'#FF7A1A',e:'#B84E0A',p:0},
@@ -343,7 +379,7 @@ const PRAISE = ['Aferin!','Süper!','Harika!','Basket!','Çok güzel!','Bravo!']
 
 // ================= KAYIT =================
 const KEY = 'hece-potasi-v2';
-let S = {letters:ORDER.slice(0,8), mic:true, stars:0, stats:{}, okuType:'kelime', duyType:'hece', best:0, speedHist:[], days:{}, goal:10, balls:['turuncu'], ball:'turuncu', storiesDone:{}, conf:{}, vowelColor:true, own:{ball:['turuncu'],hoop:['klasik'],court:['gok'],fx:['yildiz'],sticker:[]}, eq:{ball:'turuncu',hoop:'klasik',court:'gok',fx:'yildiz'}, trophies:[]};
+let S = {len:'orta', letters:ORDER.slice(0,8), mic:true, stars:0, stats:{}, okuType:'kelime', duyType:'hece', best:0, speedHist:[], days:{}, goal:10, balls:['turuncu'], ball:'turuncu', storiesDone:{}, conf:{}, vowelColor:true, own:{ball:['turuncu'],hoop:['klasik'],court:['gok'],fx:['yildiz'],sticker:[]}, eq:{ball:'turuncu',hoop:'klasik',court:'gok',fx:'yildiz'}, trophies:[]};
 try{
   const raw = localStorage.getItem(KEY);
   if(raw) S = Object.assign(S, JSON.parse(raw));
@@ -394,17 +430,46 @@ function syllabify(w){
   for(let k=0;k<v.length-1;k++){ const a=v[k], b=v[k+1], n=b-a-1; cuts.push(n<=1 ? a+1 : b-1); }
   const out=[]; let p=0; for(const c of cuts){ out.push(w.slice(p,c)); p=c; } out.push(w.slice(p)); return out;
 }
-const norm = s => lower(s).replace(/[^a-zçğıöşü\s]/g,' ').replace(/(.)\1+/g,'$1').replace(/\s+/g,' ').trim();
+const norm = s => lower(s).replace(/[’']/g,'').replace(/[^a-zçğıöşü\s]/g,' ').replace(/(.)\1+/g,'$1').replace(/\s+/g,' ').trim();
 function lev(a,b){ const m=a.length,n=b.length; const d=Array.from({length:m+1},(_,i)=>[i]); for(let j=1;j<=n;j++) d[0][j]=j;
   for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[m][n]; }
 
 function heceList(){
   const v=S.letters.filter(l=>VOW.includes(l)), c=S.letters.filter(l=>!VOW.includes(l)), out=[];
+  v.forEach(x=>out.push(x));
   c.forEach(k=>v.forEach(x=>{ if(k!=='ğ') out.push(k+x); out.push(x+k); }));
+  c.forEach(k=>{ if(k==='ğ') return; v.forEach(x=>c.forEach(z=>out.push(k+x+z))); });
   return [...new Set(out)];
 }
 const kelimeList = () => { const set=letterSet(); return WORDS.filter(w=>w.length>1 && okLetters(w,set)); };
-const cumleList = () => { const set=letterSet(); return SENTENCES.filter(s=>okLetters(s,set)); };
+const NAMES = ['Ali','Ela','Nil','Kaan','Kenan','Nail','Elif','Emir','Ayşe','Mert','Can','Efe','Ada','Zeynep','Yusuf','Ömer','Defne','Selin','Murat','Eren','Ece','Ekin','Tolga','Aras'];
+const ADJS = ['büyük','küçük','minik','güzel','yeni','kocaman','kırmızı','mavi','sarı','yeşil','mor','pembe','beyaz','turuncu','eski','temiz'];
+const cap = t => t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1);
+const TEMPLATES = [
+  (n,m,a,b)=>`Bu bir ${n}.`, (n,m,a,b)=>`${a}, ${n} al.`, (n)=>`Anne, ${n} al.`, (n)=>`Nine, ${n} al.`, (n)=>`Baba, ${n} al.`,
+  (n,m,a,b,j)=>`${cap(j)} bir ${n}.`, (n)=>`${cap(n)} var.`, (n)=>`${cap(n)} yok.`, (n,m,a)=>`${a} ${n} ister.`,
+  (n)=>`Bir ${n} gördüm.`, (n,m)=>`${cap(n)} ile ${m}.`, (n,m,a)=>`${a}, bak, ${n}!`, (n)=>`Ne güzel ${n}!`,
+  (n,m,a,b)=>`${a} ile ${b} ${n} al.`, (n,m,a,b,j)=>`${a}, ${j} ${n} al.`, (n)=>`Burada ${n} var.`, (n,m)=>`${cap(n)} al, ${m} al.`
+];
+const GEN_SKIP = new Set(['anne','nine','baba','dede','bebek','kilo','el','göz','kulak','burun','diş','bacak','ayak','kol','kalp','dünya','ateş','güneş','ay','yıldız','gökkuşağı','şimşek','yağmur','kar','deniz','dağ','ada']);
+let _cumleKey='', _cumleMemo=[];
+function cumleList(){
+  const key=S.letters.join(''); if(key===_cumleKey) return _cumleMemo;
+  const set=letterSet();
+  const hand=SENTENCES.filter(t=>okLetters(t,set));
+  const nouns=Object.keys(EMOJI).filter(w=>okLetters(w,set) && !GEN_SKIP.has(w)), names=NAMES.filter(w=>okLetters(w,set)), adjs=ADJS.filter(w=>okLetters(w,set));
+  const gen=new Set();
+  if(nouns.length && names.length){
+    TEMPLATES.forEach((T,ti)=>{
+      nouns.forEach((n,i)=>{
+        const m=nouns[(i*3+1+ti)%nouns.length], a=names[(i*7+ti)%names.length], b=names[(i*5+ti+1)%names.length], j=adjs.length?adjs[(i+ti)%adjs.length]:'';
+        if((T.length>=5 && !j) || m===n || a===b) return;
+        const t=T(n,m,a,b,j); if(okLetters(t,set)) gen.add(t);
+      });
+    });
+  }
+  _cumleKey=key; _cumleMemo=[...new Set([...hand, ...gen])]; return _cumleMemo;
+}
 const item = (p,t) => ({id:p+':'+t, text:t, p});
 
 // ---- aralıklı tekrar (Leitner kutuları) ----
@@ -444,7 +509,7 @@ function topPairs(V){
 const known = id => { const s=S.stats[id]; return !!s && s.box>=2; };
 function need(id){
   const s=S.stats[id];
-  if(!s) return 60+Math.random()*10;
+  if(!s){ const t=id.slice(2); return (CORE.has(t)||t.length<=3 ? 66 : 54)+Math.random()*10; }
   if(s.box<2) return 100+Math.min(s.e,10)*4+Math.random()*8;
   if(s.due<=Date.now()) return 85+Math.random()*8;
   return Math.random()*30;
@@ -464,6 +529,7 @@ function streak(){
   return n;
 }
 
+const LENM = () => ({kisa:1,orta:2,uzun:3})[S.len]||2;
 // ================= SES =================
 const synth = window.speechSynthesis;
 let trVoice = null;
@@ -674,13 +740,20 @@ MODES.oku = {title:'Sesli Oku', start(){
     const all=cands();
     if(!all.length){ $('word').textContent=''; msg('Bu harflerle okunacak bir şey yok. Ebeveyn panelinden harf ekleyin.'); setDots(0,0); return; }
     const order=byNeed(all), now=Date.now();
-    const learning=order.filter(i=>!known(i.id));
-    const target = learning.length ? learning[rnd(Math.min(3,learning.length))] : order[0];
-    const rest = order.filter(i=>i.id!==target.id);
-    const dueK = rest.filter(i=>known(i.id) && S.stats[i.id].due<=now);
-    let fill = [...dueK, ...shuffle(rest.filter(i=>known(i.id) && !dueK.includes(i)))].slice(0,4);
-    if(fill.length<4) fill = fill.concat(shuffle(rest.filter(i=>!fill.includes(i))).slice(0,4-fill.length));
-    seq = [target,fill[0],target,fill[1],fill[2],target,fill[3]].filter(Boolean);
+    const learning=order.filter(i=>!known(i.id)).slice(0,12);
+    const knownAll=order.filter(i=>known(i.id));
+    const dueK=knownAll.filter(i=>S.stats[i.id].due<=now);
+    const pool2=[...dueK, ...shuffle(knownAll.filter(i=>!dueK.includes(i))).slice(0,40)];
+    seq=[]; const used=new Set();
+    for(let r=0;r<LENM();r++){
+      const cand=learning.filter(i=>!used.has(i.id));
+      const target = cand.length ? cand[rnd(Math.min(3,cand.length))] : order[rnd(Math.min(order.length,20))];
+      used.add(target.id);
+      let fill = pool2.filter(i=>!used.has(i.id)).slice(0,4);
+      if(fill.length<4) fill = fill.concat(shuffle(order.slice(0,60).filter(i=>!used.has(i.id)&&!fill.includes(i))).slice(0,4-fill.length));
+      fill.forEach(f=>used.add(f.id));
+      seq.push(...[target,fill[0],target,fill[1],fill[2],target,fill[3]].filter(Boolean));
+    }
     idx=0; roundStars=0; show();
   }
   function show(){
@@ -727,7 +800,7 @@ MODES.duy = {title:'Duy ve Seç', start(){
     <div class="opts" id="opts"></div>
     <p class="msg" id="msg"></p>`;
   $('duySeg').onclick = e => { const k=e.target.dataset.k; if(!k) return; S.duyType=k; save(); MODES.duy.start(); };
-  const N=10; let qs=[], qi=0, cur=null, texts=[], tStart=0, wrong=0, rts=[], roundStars=0, locked=false;
+  const N=10*LENM(); let qs=[], qi=0, cur=null, texts=[], tStart=0, wrong=0, rts=[], roundStars=0, locked=false;
   const pool = () => (S.duyType==='hece' ? heceList() : kelimeList().filter(w=>w===lower(w))).map(x=>item('d',x));
   function distract(t){
     const others=texts.filter(x=>x!==t);
@@ -780,7 +853,7 @@ MODES.duy = {title:'Duy ve Seç', start(){
 // ---------- 3. Hız Turu ----------
 MODES.hiz = {title:'Hız Turu', start(){
   let running=false, count=0, cur=null, list=[], li=0, tEnd=0, timerI=null, micDead=false;
-  const pool = () => { const k=kelimeList().map(x=>item('k',x)); return k.length>=8 ? k : [...k, ...heceList().map(x=>item('h',x))]; };
+  const pool = () => { const all=kelimeList(), core=all.filter(w=>CORE.has(lower(w))&&w.length<=8); const k=(core.length>=15?core:all).map(x=>item('k',x)); return k.length>=8 ? k : [...k, ...heceList().map(x=>item('h',x))]; };
   cleanup = () => { running=false; clearInterval(timerI); };
   function intro(){
     setDots(0,0); micDead=false;
@@ -919,7 +992,7 @@ MODES.hikaye = {title:'Mini Hikâyeler', start(){
 
 // ---------- 5. Hece Kur ----------
 MODES.yaz = {title:'Hece Kur', start(){
-  const N=8; let qs=[], qi=0, cur=null, parts=[], pos=0, wrong=0, roundStars=0;
+  const N=8*LENM(); let qs=[], qi=0, cur=null, parts=[], pos=0, wrong=0, roundStars=0;
   function round(){
     const k=kelimeList().filter(w=>w===lower(w));
     if(!k.length){ stage.innerHTML='<p class="msg">Bu harflerle kelime yok. Ebeveyn panelinden harf ekleyin.</p>'; setDots(0,0); return; }
@@ -961,7 +1034,7 @@ MODES.yaz = {title:'Hece Kur', start(){
 
 // ---------- 6. Ses Oyunları ----------
 MODES.ses = {title:'Ses Oyunları', start(){
-  const N=8; let qi=0, q=null, wrong=0, roundStars=0, locked=false;
+  const N=8*LENM(); let qi=0, q=null, wrong=0, roundStars=0, locked=false;
   function makeQ(){
     const k=kelimeList().filter(w=>w===lower(w)), k2=k.filter(w=>syllabify(w).length>=2), types=[];
     if(k2.length>=3) types.push('birlestir','cikar');
@@ -1009,7 +1082,7 @@ MODES.ses = {title:'Ses Oyunları', start(){
 
 // ---------- 7. Oku ve Bul ----------
 MODES.bul = {title:'Oku ve Bul', start(){
-  const N=8; let qs=[], qi=0, cur=null, wrong=0, hinted=false, roundStars=0, p=[];
+  const N=8*LENM(); let qs=[], qi=0, cur=null, wrong=0, hinted=false, roundStars=0, p=[];
   function round(){
     p=kelimeList().filter(w=>EMOJI[w]).map(x=>item('r',x));
     if(p.length<3){ stage.innerHTML='<p class="msg">Bu harflerle resimli kelime az. Ebeveyn panelinden birkaç harf daha ekleyin.</p>'; setDots(0,0); return; }
@@ -1054,7 +1127,7 @@ MODES.usta = {title:'Sesli Harf Ustası', start(){
     steps=[];
     shuffle([...pv, ...shuffle(V)].slice(0,4)).forEach(v=>steps.push({k:'isin',v}));
     for(let i=0;i<3;i++){ const pr=pairs[i%pairs.length]; steps.push({k:'kay',c:kc[rnd(kc.length)],v:pr[i%2]}); }
-    for(let i=0;i<6;i++){ const pr=pairs[i%pairs.length]; steps.push({k:'ikiz',c:C[rnd(C.length)],pr,v:pr[rnd(2)]}); }
+    for(let i=0;i<6*LENM();i++){ const pr=pairs[i%pairs.length]; steps.push({k:'ikiz',c:C[rnd(C.length)],pr,v:pr[rnd(2)]}); }
     const c=C[rnd(C.length)];
     [...new Set([...pairs[0], ...shuffle(V)])].slice(0,4).forEach(v=>steps.push({k:'degnek',c,v}));
     si=0; roundStars=0; run();
@@ -1244,12 +1317,16 @@ MODES.parent = {title:'Ebeveyn', start(){
     stage.innerHTML = `<div class="panelwrap">
       <div class="panel"><h3>Yıldızlar</h3><div class="starset"><input type="number" id="starIn" min="0" max="99999" inputmode="numeric" value="${S.stars}" aria-label="Yıldız sayısı"><button class="ghost" id="bStarSave">Kaydet</button><button class="ghost" data-add="10">+10</button><button class="ghost" data-add="50">+50</button></div>
         <p class="tiny">Yıldızlar bir şekilde sıfırlanırsa kazandığı sayıyı buradan geri yazabilirsiniz.</p></div>
+      <div class="panel"><h3>Seri (🔥 gün)</h3><div class="starset"><input type="number" id="strIn" min="0" max="365" inputmode="numeric" value="${streak()}" aria-label="Seri gün sayısı"><button class="ghost" id="bStrSave">Kaydet</button></div>
+        <p class="tiny">Cihaz değişince ya da veriler silinince seriyi buradan düzeltebilirsiniz.</p></div>
       <div class="panel"><h3>Bugün</h3><p class="big2">${today} / ${S.goal} dk<span>🔥 ${streak()} gün seri</span></p><p class="tiny">Tekrar zamanı gelen kart: ${dueCount()}. Seri için günde en az 1 dakika oynamak yeterli.</p></div>
       <div class="panel"><h3>Son 7 gün (dakika)</h3>${bars}</div>
       <div class="panel"><h3>Hız turu (rekor ${S.best})</h3>${speedSvg}</div>
       <div class="panel"><h3>Karıştırdığı sesli harfler</h3><div class="hard">${conf.length?conf.map(([k,n])=>`<span>${k.replace('|',' – ')} <small>×${n}</small></span>`).join(''):'<span>Henüz kayıt yok</span>'}</div><p class="tiny">“Sesli Harf Ustası” en çok karıştırdığı iki çifte odaklanır. Kayıt yoksa a – e ve e – i ile başlar.</p></div>
       <div class="panel"><h3>Zorlandıkları</h3><div class="hard">${hard.length?hard.map(([t,e])=>`<span>${t} <small>×${e}</small></span>`).join(''):'<span>Henüz yok</span>'}</div></div>
       <div class="panel"><h3>Öğrendiği harfler</h3><p class="tiny">Yeni harf öğrendikçe dokunup ekleyin. Bütün oyunlar sadece seçili harflerle çalışır.</p><div class="chips" id="chips" style="margin-top:8px"></div><p class="tiny" id="cntNote"></p></div>
+      <div class="panel"><h3>Tur uzunluğu</h3><div class="seg" id="lenSeg">${[['kisa','Kısa'],['orta','Orta'],['uzun','Uzun']].map(([k,t])=>`<button data-l="${k}" class="${S.len===k?'on':''}">${t}</button>`).join('')}</div>
+        <p class="tiny">Kısa: 7 kart / 8-10 soru. Orta: 14 kart / 16-20 soru. Uzun: 21 kart / 24-30 soru.</p></div>
       <div class="panel"><h3>Günlük hedef</h3><div class="seg" id="goalSeg">${[5,10,15,20].map(g=>`<button data-g="${g}" class="${S.goal===g?'on':''}">${g} dk</button>`).join('')}</div></div>
       <div class="panel"><h3>Mikrofon</h3><div class="seg" id="micSeg"><button data-m="1" class="${S.mic?'on':''}">Açık</button><button data-m="0" class="${!S.mic?'on':''}">Kapalı</button></div>
         <p class="tiny">${SR?'Kapalıyken çocuk yüksek sesle okur, siz “Doğru okudu”ya basarsınız.':'Bu tarayıcı ses tanımayı desteklemiyor. Android’de Chrome ile açın.'}</p></div>
@@ -1260,12 +1337,14 @@ MODES.parent = {title:'Ebeveyn', start(){
       <button class="ghost danger" id="bReset">İlerlemeyi sıfırla</button></div>`;
     function chips(){
       $('chips').innerHTML = ORDER.map(l=>`<button class="chip ${S.letters.includes(l)?'on':''}" data-l="${l}" aria-pressed="${S.letters.includes(l)}">${l}</button>`).join('');
-      $('cntNote').textContent = `Bu harflerle ${heceList().length} hece, ${kelimeList().length} kelime ve ${STORIES.filter(s=>okLetters(s.s.join(' '))).length} hikâye var.`;
+      $('cntNote').textContent = `Bu harflerle ${heceList().length} hece, ${kelimeList().length} kelime, ${cumleList().length} cümle ve ${STORIES.filter(s=>okLetters(s.s.join(' '))).length} hikâye var.`;
     }
     chips();
     $('chips').onclick = e => { const l=e.target.dataset.l; if(!l) return; S.letters = S.letters.includes(l) ? S.letters.filter(x=>x!==l) : ORDER.filter(x=>S.letters.includes(x)||x===l); save(); chips(); };
+    $('lenSeg').onclick = e => { const l=e.target.dataset.l; if(!l) return; S.len=l; save(); [...$('lenSeg').children].forEach(x=>x.classList.toggle('on',x.dataset.l===l)); };
     $('goalSeg').onclick = e => { const g=+e.target.dataset.g; if(!g) return; S.goal=g; save(); [...$('goalSeg').children].forEach(x=>x.classList.toggle('on',+x.dataset.g===g)); };
     $('bStarSave').onclick = () => { const v=Math.max(0,Math.min(99999,parseInt($('starIn').value,10)||0)); S.stars=v; save(); updateStars(); good(); $('starIn').value=v; };
+    $('bStrSave').onclick = () => { const v=Math.max(0,Math.min(365,parseInt($('strIn').value,10)||0)); setStreak(v); $('strIn').value=streak(); good(); };
     stage.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{ S.stars+=+b.dataset.add; save(); updateStars(); $('starIn').value=S.stars; tone([700],.06); });
     $('vcSeg').onclick = e => { const v=e.target.dataset.v; if(v===undefined) return; S.vowelColor=v==='1'; save(); [...$('vcSeg').children].forEach(x=>x.classList.toggle('on',x.dataset.v===v)); };
     $('micSeg').onclick = e => { const m=e.target.dataset.m; if(m===undefined) return; S.mic=m==='1'; save(); [...$('micSeg').children].forEach(x=>x.classList.toggle('on',x.dataset.m===m)); };
@@ -1323,6 +1402,16 @@ function go(mode){
   MODES[mode].start();
 }
 $('btnHome').onclick = () => go('home');
+// seri (🔥) ayarı: bugünün durumuna göre geçmiş günleri doldurur
+function setStreak(n){
+  const d=new Date(), todayOk=(S.days[dkey(d)]||0)>=60;
+  if(!todayOk) d.setDate(d.getDate()-1);
+  for(let i=0;i<n;i++){ const k=dkey(d); if((S.days[k]||0)<60) S.days[k]=60; d.setDate(d.getDate()-1); }
+  S.days[dkey(d)]=0;
+  if(!todayOk && n===0) S.days[dkey(new Date(Date.now()-86400000))]=0;
+  save();
+}
+if(!S.seed176){ S.stars=176; setStreak(2); S.seed176=true; save(); }
 go('home');
 })();
 </script>
